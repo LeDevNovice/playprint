@@ -21,3 +21,6 @@ drizzle/meta/
 # IDE
 .vscode/settings.json
 .idea/
+
+# Config locale
+*.local
