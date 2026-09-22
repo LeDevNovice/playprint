@@ -1,0 +1,23 @@
+# Environnement
+.env
+.env.*
+!.env.example
+
+# Build
+node_modules/
+dist/
+.astro/
+
+# Runtime
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Drizzle
+drizzle/meta/
+
+# IDE
+.vscode/settings.json
+.idea/
