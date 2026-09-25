@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+
+  --base: #07090f;     
+  --surface: #0c1019;  
+  --panel: #141824;    
+
+  --text: #e4edff;     
+  --subtext: #b8c4d8;  
+  --dim: #7b8ba8;      
+  --muted: #3d4a68;    
+
+  --border: rgb(255 255 255 / 0.09); 
+
+  --accent: #7c9cff;   
+
+  --score-high: #22c55e;    
+  --score-mid: #f59e0b;     
+  --score-low: #ef4444;     
+  --score-unknown: #6b7280; 
+}
+
+@theme {
+  --color-*: initial;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-dm-mono);
+
+  --color-canvas: var(--base);
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+
+  --color-text: var(--text);
+  --color-subtext: var(--subtext);
+  --color-dim: var(--dim);
+  --color-muted: var(--muted);
+
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+
+  --color-score-high: var(--score-high);
+  --color-score-mid: var(--score-mid);
+  --color-score-low: var(--score-low);
+  --color-score-unknown: var(--score-unknown);
+}
