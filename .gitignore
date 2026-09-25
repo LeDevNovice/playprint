@@ -31,3 +31,9 @@ drizzle/meta/
 
 # Config locale
 *.local
+
+# Cloudflare Workers (apps/web)
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+worker-configuration.d.ts
