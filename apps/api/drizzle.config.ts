@@ -17,6 +17,4 @@ export default defineConfig({
   dbCredentials: {
     url: directUrl,
   },
-  verbose: true,
-  strict: true,
 });
