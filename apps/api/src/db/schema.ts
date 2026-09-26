@@ -155,7 +155,7 @@ export const predictions = pgTable(
     createdAt: createdAt(),
   },
   (t) => [
-    index('predictions_user_id_created_at_idx').on(t.userId, t.createdAt.desc()),
+    index('predictions_user_id_created_at_idx').on(t.userId, t.createdAt),
     index('predictions_game_id_idx').on(t.gameId),
     check('predictions_score_value_range', sql`${t.scoreValue} BETWEEN 0 AND 100`),
     check('predictions_confidence_range', sql`${t.confidence} BETWEEN 0 AND 100`),

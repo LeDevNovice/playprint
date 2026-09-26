@@ -15,6 +15,13 @@
       "when": 1790438523807,
       "tag": "0001_user_games_post_mortem_idx",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790439643113,
+      "tag": "0002_predictions_user_created_at_idx_order",
+      "breakpoints": true
     }
   ]
 }
