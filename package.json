@@ -13,7 +13,8 @@
     "build:api": "npm run build -w apps/api",
     "build:web": "npm run build -w apps/web",
     "db:generate": "npm run db:generate -w apps/api",
-    "db:migrate": "npm run db:migrate -w apps/api"
+    "db:migrate": "npm run db:migrate -w apps/api",
+    "db:seed": "npm run db:seed -w apps/api"
   },
   "devDependencies": {
     "concurrently": "10.0.5",

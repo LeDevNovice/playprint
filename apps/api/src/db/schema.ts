@@ -49,7 +49,6 @@ export const games = pgTable(
     title: text('title').notNull(),
     coverUrl: text('cover_url'),
     platforms: text('platforms').array().notNull().default(sql`'{}'::text[]`),
-    genres: text('genres').array().notNull().default(sql`'{}'::text[]`),
     releaseYear: integer('release_year'),
     avgCompletionRate: percentage('avg_completion_rate'),
     createdAt: createdAt(),
@@ -58,6 +57,52 @@ export const games = pgTable(
   (t) => [
     check('games_igdb_id_positive', sql`${t.igdbId} > 0`),
     check('games_avg_completion_rate_range', sql`${t.avgCompletionRate} BETWEEN 0 AND 100`),
+  ],
+);
+
+export const genres = pgTable(
+  'genres',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    igdbId: integer('igdb_id').notNull().unique(),
+    name: text('name').notNull(),
+    createdAt: createdAt(),
+    updatedAt: updatedAt(),
+  },
+  (t) => [check('genres_igdb_id_positive', sql`${t.igdbId} > 0`)],
+);
+
+export const gameGenres = pgTable(
+  'game_genres',
+  {
+    gameId: uuid('game_id')
+      .notNull()
+      .references(() => games.id, { onDelete: 'cascade' }),
+    genreId: uuid('genre_id')
+      .notNull()
+      .references(() => genres.id, { onDelete: 'restrict' }),
+  },
+  (t) => [
+    primaryKey({ columns: [t.gameId, t.genreId] }),
+    index('game_genres_genre_id_idx').on(t.genreId),
+  ],
+);
+
+export const genreCompletionBaselines = pgTable(
+  'genre_completion_baselines',
+  {
+    genreId: uuid('genre_id')
+      .primaryKey()
+      .references(() => genres.id, { onDelete: 'restrict' }),
+    completionRate: percentage('completion_rate').notNull(),
+    createdAt: createdAt(),
+    updatedAt: updatedAt(),
+  },
+  (t) => [
+    check(
+      'genre_completion_baselines_completion_rate_range',
+      sql`${t.completionRate} BETWEEN 0 AND 100`,
+    ),
   ],
 );
 
