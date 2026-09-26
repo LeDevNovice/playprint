@@ -1,0 +1,1 @@
+CREATE INDEX "user_games_status_status_changed_at_idx" ON "user_games" USING btree ("status","status_changed_at");

@@ -112,6 +112,7 @@ export const userGames = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.gameId] }),
     index('user_games_game_id_idx').on(t.gameId),
+    index('user_games_status_status_changed_at_idx').on(t.status, t.statusChangedAt),
     check('user_games_steam_playtime_non_negative', sql`${t.steamPlaytimeMinutes} >= 0`),
     check(
       'user_games_achievement_completion_rate_range',
