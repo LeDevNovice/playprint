@@ -20,7 +20,7 @@ const requirePooledChannel = (
   return Either.right(url);
 };
 
-const PooledDatabaseUrl = Config.redacted().pipe(
+export const PooledDatabaseUrl = Config.redacted().pipe(
   Config.mapOrFail(requirePooledChannel),
   Config.nested('DATABASE_URL'),
 );
