@@ -16,7 +16,8 @@
     "db:check": "drizzle-kit check",
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx src/db/seed.ts",
-    "smoke:db": "tsx src/infra/database.smoke.ts"
+    "smoke:db": "tsx src/infra/database.smoke.ts",
+    "smoke:config": "tsx src/infra/config.smoke.ts"
   },
   "dependencies": {
     "@effect/platform": "0.97.2",

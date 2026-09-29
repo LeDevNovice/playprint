@@ -1,6 +1,7 @@
 import type { SqlClient, SqlError } from '@effect/sql';
 import { PgClient } from '@effect/sql-pg';
 import { Config, ConfigError, Duration, Either, Layer, Redacted } from 'effect';
+import { secret } from './config';
 
 const requirePooledChannel = (
   url: Redacted.Redacted<string>,
@@ -20,10 +21,7 @@ const requirePooledChannel = (
   return Either.right(url);
 };
 
-export const PooledDatabaseUrl = Config.redacted().pipe(
-  Config.mapOrFail(requirePooledChannel),
-  Config.nested('DATABASE_URL'),
-);
+export const PooledDatabaseUrl = secret('DATABASE_URL', requirePooledChannel);
 
 export const DatabaseLayer: Layer.Layer<
   SqlClient.SqlClient,
